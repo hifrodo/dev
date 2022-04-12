@@ -57,7 +57,7 @@ jobs:
       - name: docker build
         run: |
           cp ./build/libs/*.war ./Dockerfile
-          docker build -t test${{ env.RELEASE_VERSION }} ./Dockerfile
+          docker build -t test:${{ env.RELEASE_VERSION }} ./Dockerfile
 
-      - name: docker build
+      - name: docker images check
         run: docker images
