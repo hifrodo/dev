@@ -35,8 +35,8 @@ jobs:
           java-version: '11'
           cache: 'gradle'
       
-      - name: chomod gradle
-        run: chmod -x ./gradlew
+      - name: chmod gradle
+        run: chmod +x ./gradlew
         
       - name: build
         run: ./gradlew build --no-daemon
