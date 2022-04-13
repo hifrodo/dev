@@ -47,6 +47,7 @@ jobs:
         run: |
           cp ./build/libs/*.war ./Dockerfile
           docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/m-dev:tomcat_${{ env.RELEASE_VERSION }} ./Dockerfile
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/m-dev:tomcat_latest ./Dockerfile
 
       - name: docker images check
         run: docker images
@@ -58,8 +59,10 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
           
       - name: docer push
-        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/m-dev:tomcat_${{ env.RELEASE_VERSION }}
-        
+        run: | 
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/m-dev:tomcat_${{ env.RELEASE_VERSION }}
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/m-dev:tomcat_latest
+          
       - name: Get GKE Credentials
         uses: google-github-actions/get-gke-credentials@v0.7.0
         with:
