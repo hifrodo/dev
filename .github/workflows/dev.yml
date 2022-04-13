@@ -78,4 +78,4 @@ jobs:
         with:
           credentials: ${{ secrets.GCP_SA_KEY }}
           path: ./build/libs/my-spring-board-0.0.1-SNAPSHOT.war
-          destination: hifrodochoi/${{ env.RELEASE_VERSION }}.war
+          destination: hifrodochoi/${{ env.RELEASE_VERSION }}
