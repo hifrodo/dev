@@ -78,7 +78,7 @@ jobs:
         with:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          source: '/home/runner/work/dev/dev/build/libs/my-spring-board-0.0.1-SNAPSHOT.war'
+          source: './build/libs/my-spring-board-0.0.1-SNAPSHOT.war'
           dest: 's3://hifrdo5020/${{ env.RELEASE_VERSION }}/'
           flags: --recursive
        
