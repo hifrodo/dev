@@ -73,7 +73,7 @@ jobs:
         with:
           args: set image --record deployment/was was=${{ secrets.DOCKERHUB_USERNAME }}/m-dev:tomcat_${{ env.RELEASE_VERSION }}
       
-      - name: Upload S3     
+      - name: artifact Upload to S3     
         uses: shallwefootball/upload-s3-action@v1.1.3
         with:
           aws_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
