@@ -36,6 +36,13 @@ jobs:
       - name: build
         run: ./gradlew build --no-daemon
         
+      - name: test
+        run: |
+          ls -al
+          ls pwd
+          ls /
+          
+        
       - name: check build
         run: ls ./build/libs
         
