@@ -80,7 +80,7 @@ jobs:
           aws_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws_bucket: hifrdo5020
-          source_dir: './build/libs/my-spring-board-0.0.1-SNAPSHOT.war'
-          destination_dir: ${{ env.RELEASE_VERSION }}
+          source_dir: './build/libs/'
+          destination_dir: '${{ env.RELEASE_VERSION }}'
       
        
