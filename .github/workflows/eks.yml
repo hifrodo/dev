@@ -36,12 +36,6 @@ jobs:
       - name: build
         run: ./gradlew build --no-daemon
         
-      - name: test
-        run: |
-          ls -al
-          pwd
-          
-        
       - name: check build
         run: ls ./build/libs
         
@@ -85,7 +79,7 @@ jobs:
           aws_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws_bucket: hifrdo5020
-          source_dir: ./build/libs/my-spring-board-0.0.1-SNAPSHOT.war
+          source_dir: /home/runner/work/dev/dev/build/libs/my-spring-board-0.0.1-SNAPSHOT.war
           destination_dir: ${{ env.RELEASE_VERSION }}
       
        
