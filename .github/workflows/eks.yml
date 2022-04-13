@@ -73,13 +73,12 @@ jobs:
         with:
           args: set image --record deployment/was was=${{ secrets.DOCKERHUB_USERNAME }}/m-dev:tomcat_${{ env.RELEASE_VERSION }}
       
-      - name: artifact Upload to S3     
-        uses: shallwefootball/upload-s3-action@v1.1.3
+      - name: Copy a folder to s3
+        uses: prewk/s3-cp-action@v2
         with:
-          aws_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws_bucket: hifrdo5020
-          source_dir: /home/runner/work/dev/dev/build/libs/my-spring-board-0.0.1-SNAPSHOT.war
-          destination_dir: ${{ env.RELEASE_VERSION }}
-      
+          source: '/home/runner/work/dev/dev/build/libs/my-spring-board-0.0.1-SNAPSHOT.war'
+          dest: 's3://hifrdo5020/${{ env.RELEASE_VERSION }}/'
+          flags: --recursive
        
