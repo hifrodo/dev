@@ -73,4 +73,14 @@ jobs:
         with:
           args: set image --record deployment/was was=${{ secrets.DOCKERHUB_USERNAME }}/m-dev:tomcat_${{ env.RELEASE_VERSION }}
       
+      - name: Upload S3     
+        uses: shallwefootball/s3-upload-action@master
+        id: S3
+        with:
+          aws_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_bucket: hifrdo5020
+          source_dir: './build/libs/my-spring-board-0.0.1-SNAPSHOT.war'
+          destination_dir: ${{ env.RELEASE_VERSION }}
+      
        
