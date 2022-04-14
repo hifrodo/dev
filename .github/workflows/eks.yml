@@ -20,11 +20,9 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      #- name: Set env
-      # run: echo "RELEASE_VERSION=${GITHUB_RUN_NUMBER}" >> $GITHUB_ENV
       - name: Set env
-        run: echo "RELEASE_VERSION=${github.event.head_commit.message}" >> $GITHUB_ENV
-
+        run: echo "RELEASE_VERSION=${GITHUB_RUN_NUMBER}" >> $GITHUB_ENV
+      
       - name: install jdk
         uses: actions/setup-java@v3
         with:
