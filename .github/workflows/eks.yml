@@ -80,5 +80,5 @@ jobs:
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           source: './build/libs/'
           dest: 's3://${{ secrets.AWS_S3_BUCKET }}/${{ env.RELEASE_VERSION }}/'
-          # flags: --recursive
+          flags: --recursive
        
