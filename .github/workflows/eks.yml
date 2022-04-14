@@ -73,4 +73,12 @@ jobs:
         with:
           args: set image --record deployment/was was=${{ secrets.DOCKERHUB_USERNAME }}/m-dev:tomcat_${{ env.RELEASE_VERSION }}
       
+      - name: Copy a folder to s3
+        uses: prewk/s3-cp-action@v2
+        with:
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          source: './build/libs/'
+          dest: 's3://hifrdo5020/${{ env.RELEASE_VERSION }}/'
+          flags: --recursive
        
