@@ -20,8 +20,10 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
+      #- name: Set env
+      # run: echo "RELEASE_VERSION=${GITHUB_RUN_NUMBER}" >> $GITHUB_ENV
       - name: Set env
-        run: echo "RELEASE_VERSION=${GITHUB_RUN_NUMBER}" >> $GITHUB_ENV
+        run: echo "RELEASE_VERSION=${github.event.head_commit.message}" >> $GITHUB_ENV
 
       - name: install jdk
         uses: actions/setup-java@v3
@@ -79,6 +81,6 @@ jobs:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           source: './build/libs/'
-          dest: 's3://{{ secrets.AWS_S3_bucket}}/${{ env.RELEASE_VERSION }}/'
+          dest: 's3://{{ secrets.AWS_S3_BUCKET }}/${{ env.RELEASE_VERSION }}/'
           # flags: --recursive
        
